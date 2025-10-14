@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const triggers = document.querySelectorAll("[data-video]");
+  const triggers = document.querySelectorAll(".btn[data-video]"); // only buttons
   const lightbox = document.getElementById("video-lightbox");
   const video = document.getElementById("lightbox-video");
+  const caption = document.getElementById("video-caption");
   const closeBtn = lightbox.querySelector(".close-btn");
 
-  const openLightbox = (src) => {
+  const openLightbox = (src, titleText) => {
     video.src = src;
+    caption.textContent = titleText || "Zinnion Learning Experience";
     lightbox.hidden = false;
-    // force reflow so CSS transition starts cleanly
-    void lightbox.offsetWidth;
+    void lightbox.offsetWidth; // reset for transition
     lightbox.classList.add("show");
     document.body.classList.add("no-scroll");
   };
@@ -17,20 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
     lightbox.classList.remove("show");
     video.pause();
     video.src = "";
+    caption.textContent = "";
     document.body.classList.remove("no-scroll");
-    // wait for fade-out before hiding
-    setTimeout(() => (lightbox.hidden = true), 300);
+    setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  // open
-  triggers.forEach(el => {
-    el.addEventListener("click", () => {
-      const src = el.dataset.video;
-      if (src) openLightbox(src);
+  // open on button click only
+  triggers.forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      const src = btn.dataset.video;
+      const titleEl = btn.closest(".project-copy")?.querySelector("h2");
+      const titleText = titleEl ? titleEl.textContent.trim() : "";
+      if (src) openLightbox(src, titleText);
     });
   });
 
-  // close
   closeBtn.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", e => {
     if (e.target === lightbox) closeLightbox();
