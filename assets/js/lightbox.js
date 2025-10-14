@@ -1,61 +1,96 @@
-/* =========================================
-   Zinnion — Video Lightbox
-   ========================================= */
-document.addEventListener("DOMContentLoaded", () => {
-  // Buttons that trigger the lightbox
-  const triggers = document.querySelectorAll(".btn[data-video]");
+/* ===== Lightbox ===== */
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 30px;
+}
+.video-lightbox.show {
+  display: flex;
+  opacity: 1;
+}
 
-  // Lightbox elements
-  const lightbox = document.getElementById("video-lightbox");
-  const video    = document.getElementById("lightbox-video");
-  const caption  = document.getElementById("video-caption");
-  const closeBtn = lightbox.querySelector(".close-btn");
+/* Keep content centered and responsive */
+.lightbox-content {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
+}
 
-  // Safety: if JS fails to find elements, bail quietly
-  if (!lightbox || !video || !caption || !closeBtn) return;
+/* === Frame and Video === */
+.video-frame {
+  width: 100%;
+  border: 8px solid #d58a00; /* brand color */
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 25px rgba(213, 138, 0, 0.4);
+}
 
-  // Open
-  function openLightbox(src, titleText){
-    // show using display/opacity (avoid 'hidden' attribute issues)
-    lightbox.style.display = "flex";
-    requestAnimationFrame(() => lightbox.classList.add("show"));
+/* The video fills the frame area immediately */
+#lightbox-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background: #000;
+}
 
-    video.src = src || "";
-    caption.textContent = titleText || "";
-    document.body.classList.add("no-scroll");
-    lightbox.setAttribute("aria-hidden", "false");
-  }
+/* === Caption band === */
+.video-caption {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 10px;
+  border-radius: 8px;
+  background: rgba(213, 138, 0, 0.25); /* lighter shade of brand color */
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  font-size: 0.95rem;
+  animation: fadeIn 0.5s ease;
+}
 
-  // Close
-  function closeLightbox(){
-    lightbox.classList.remove("show");
-    setTimeout(() => {
-      lightbox.style.display = "none";
-      video.pause();
-      video.removeAttribute("src"); // fully unload video
-      caption.textContent = "";
-      document.body.classList.remove("no-scroll");
-      lightbox.setAttribute("aria-hidden", "true");
-    }, 220);
-  }
+/* === Close button === */
+.close-btn {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.close-btn:hover {
+  transform: scale(1.08);
+  background: #d58a00;
+  color: #000;
+}
 
-  // Bind button clicks
-  triggers.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const src = btn.getAttribute("data-video");
-      const title = btn.closest(".project")?.querySelector("h2")?.textContent?.trim() || "Zinnion Project";
-      if (src) openLightbox(src, title);
-    });
-  });
+/* Keep background scroll disabled while open */
+.no-scroll {
+  overflow: hidden;
+}
 
-  // Close actions
-  closeBtn.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) closeLightbox(); // only backdrop
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && lightbox.style.display === "flex") closeLightbox();
-  });
-});
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
