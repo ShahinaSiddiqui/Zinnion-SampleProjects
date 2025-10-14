@@ -6,8 +6,8 @@
   <title>Zinnion Showcase — Sample Projects</title>
   <link rel="stylesheet" href="assets/css/style.css?v=2025-10" />
 </head>
-<body>
 
+<body>
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="header-row">
@@ -29,9 +29,9 @@
   <!-- Projects -->
   <main class="container projects-list">
 
-    <!-- Each project block -->
+    <!-- Counterfeit -->
     <article class="project">
-      <div class="project-media" data-video="assets/projects/counterfeit/counterfeit.mp4">
+      <div class="project-media">
         <img src="assets/projects/counterfeit/ThumbnailCounterfeit.png" alt="Counterfeit Currency Thumbnail" />
       </div>
       <div class="project-copy">
@@ -41,8 +41,9 @@
       </div>
     </article>
 
+    <!-- Vikram Betal -->
     <article class="project alt">
-      <div class="project-media" data-video="assets/projects/VikramBetal/VikramBetal.mp4">
+      <div class="project-media">
         <img src="assets/projects/VikramBetal/ThumbnailVikramBetal.png" alt="Vikram Betal Thumbnail" />
       </div>
       <div class="project-copy">
@@ -52,8 +53,9 @@
       </div>
     </article>
 
+    <!-- 3-in-1 Trading -->
     <article class="project">
-      <div class="project-media" data-video="assets/projects/3in1TradingAccount/3in1.mp4">
+      <div class="project-media">
         <img src="assets/projects/3in1TradingAccount/Thumbnail3in1.png" alt="3-in-1 Trading Thumbnail" />
       </div>
       <div class="project-copy">
@@ -63,8 +65,9 @@
       </div>
     </article>
 
+    <!-- Home Loan -->
     <article class="project alt">
-      <div class="project-media" data-video="assets/projects/HomeLoan/HomeLoan.mp4">
+      <div class="project-media">
         <img src="assets/projects/HomeLoan/ThumbnailHomeLoan.png" alt="Home Loan Thumbnail" />
       </div>
       <div class="project-copy">
@@ -74,8 +77,9 @@
       </div>
     </article>
 
+    <!-- Indus Marathon -->
     <article class="project">
-      <div class="project-media" data-video="assets/projects/IndusMarathon/IndusMarathon.mp4">
+      <div class="project-media">
         <img src="assets/projects/IndusMarathon/ThumbnailIndusMarathon.png" alt="Indus Marathon Thumbnail" />
       </div>
       <div class="project-copy">
@@ -85,8 +89,9 @@
       </div>
     </article>
 
+    <!-- Yaksha Prashna -->
     <article class="project alt">
-      <div class="project-media" data-video="assets/projects/YakshaPrashna/YakshaPrashna.mp4">
+      <div class="project-media">
         <img src="assets/projects/YakshaPrashna/ThumbnailYakshaPrashna.png" alt="Yaksha Prashna Thumbnail" />
       </div>
       <div class="project-copy">
@@ -96,8 +101,9 @@
       </div>
     </article>
 
+    <!-- PPT Trading -->
     <article class="project">
-      <div class="project-media" data-video="assets/projects/PPTTradingAccount/PPT.mp4">
+      <div class="project-media">
         <img src="assets/projects/PPTTradingAccount/ThumbnailPPT.png" alt="Trading PPT Thumbnail" />
       </div>
       <div class="project-copy">
@@ -106,13 +112,19 @@
         <button class="btn" data-video="assets/projects/PPTTradingAccount/PPT.mp4">View it in action</button>
       </div>
     </article>
+
   </main>
 
   <!-- Video Lightbox -->
   <div id="video-lightbox" class="lightbox" hidden>
     <div class="lightbox-content">
+      <div class="video-frame">
+        <video id="lightbox-video" controls preload="metadata"></video>
+        <div class="caption-bar">
+          <p id="video-caption">Loading...</p>
+        </div>
+      </div>
       <button class="close-btn" aria-label="Close video">×</button>
-      <video id="lightbox-video" controls autoplay></video>
     </div>
   </div>
 
