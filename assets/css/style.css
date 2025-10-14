@@ -207,6 +207,67 @@ img { max-width: 100%; display: block; border-radius: 10px; }
     font-size: 0.95rem;
   }
 }
+/* ----------------------------- */
+/* VIDEO LIGHTBOX (with fade)    */
+/* ----------------------------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+
+.lightbox.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  width: 80%;
+  max-width: 960px;
+  border-radius: 8px;
+  overflow: hidden;
+  transform: scale(0.96);
+  transition: transform .3s ease;
+}
+
+.lightbox.show .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox video {
+  width: 100%;
+  display: block;
+  background: #000;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.close-btn:hover {
+  color: #ffb300;
+  transform: scale(1.15);
+}
+
 
 .no-scroll {
   overflow: hidden;
