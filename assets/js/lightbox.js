@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  // Open only on button click
   triggers.forEach(btn => {
     btn.addEventListener("click", e => {
       e.stopPropagation();
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Close triggers
   closeBtn.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", e => {
     if (e.target === lightbox) closeLightbox();
