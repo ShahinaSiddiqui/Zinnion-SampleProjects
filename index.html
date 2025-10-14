@@ -1,82 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zinnion Sample Projects</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=2025-10" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zinnion Showcase</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-  <!-- Backdrop for mobile nav -->
-  <div class="backdrop" hidden></div>
-
   <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="header-row">
-      <a class="brand" href="index.html">Zinnion</a>
-      <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">☰</button>
-      <nav id="site-nav" class="nav" aria-label="Main">
-        <a class="nav-link active" href="index.html">Sample Projects</a>
-        <a class="nav-link" href="#">Get in Touch</a>
-        <a class="nav-link" href="Zinnion-Showcase.pdf" download>Download brochure</a>
-      </nav>
-    </div>
+  <header class="header">
+    <div class="brand">Zinnion</div>
+    <nav class="nav-links">
+      <a href="#">Sample Projects</a>
+      <a href="#">Get in Touch</a>
+      <a href="#">Download Brochure</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero center">
-    <h2>We design learning experiences... and we like to do it perfectly !</h2>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>We design learning experiences...<br><span>and we like to do it perfectly!</span></h1>
   </section>
 
-  <!-- Projects -->
-  <main class="container">
-    <article class="project-card">
-      <img src="assets/thumbnails/sample-thumb.jpg" alt="Project Thumbnail" class="thumb" />
-      <div class="project-copy">
-        <h3>Stock Market Simulation Game for the 3-in-1 Trading Account</h3>
-        <p>
-          An immersive e-learning experience designed as a simulation-based game where employees engage
-          in a realistic stock-market environment. The module helps learners build confidence in pitching
-          the 3-in-1 Trading Account to clients.
-        </p>
-        <a href="video/tradeind.html" class="btn btn-primary">View it in action</a>
+  <!-- Projects Section -->
+  <section class="projects">
+    <!-- Project 1 -->
+    <div class="project">
+      <div class="thumb">
+        <img src="assets/projects/3in1TradingAccount/Thumbnail3in1.png" alt="3-in-1 Trading Account Thumbnail">
       </div>
-    </article>
-  </main>
+      <div class="details">
+        <h2>Stock Market Simulation Game for the 3-in-1 Trading Account</h2>
+        <p>An immersive e-learning experience designed as a simulation-based game where employees engage in a realistic stock-market environment. The module helps learners build confidence in pitching the 3-in-1 Trading Account to clients.</p>
+        <a href="assets/projects/3in1TradingAccount/3in1.mp4" class="btn" target="_blank">View it in Action</a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project">
+      <div class="thumb">
+        <img src="assets/projects/counterfeit/ThumbnailCounterfeit.png" alt="Counterfeit Currency Thumbnail">
+      </div>
+      <div class="details">
+        <h2>Counterfeit Currency: Game-Based E-Learning Module</h2>
+        <p>A heist-inspired game-based module where employees learned to detect counterfeit notes by ‘printing,’ protecting, and testing currency through immersive challenges and real teller scenarios.</p>
+        <a href="assets/projects/counterfeit/counterfeit.mp4" class="btn" target="_blank">View it in Action</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project">
+      <div class="thumb">
+        <img src="assets/projects/VikramBetal/ThumbnailVikramBetal.png" alt="Vikram-Betal Thumbnail">
+      </div>
+      <div class="details">
+        <h2>An Indian Folklore Story of “Vikram-Betal” Adapted into a Decision-Making Assessment</h2>
+        <p>A narrative-driven ethics assessment blending the Indian tale of Vikram and Betal with modern workplace dilemmas. Learners practiced value-based decision-making in tricky business situations reinforced through custom 2D animations.</p>
+        <a href="assets/projects/VikramBetal/VikramBetal.mp4" class="btn" target="_blank">View it in Action</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-row">
-      <small>© Zinnion Learning Solutions</small>
-    </div>
+  <footer class="footer">
+    <p>© Zinnion Learning Solutions</p>
   </footer>
-
-  <script>
-  /* Mobile menu toggler (same behavior as your portfolio) */
-  (() => {
-    const toggle   = document.querySelector('.menu-toggle');
-    const nav      = document.getElementById('site-nav');
-    const backdrop = document.querySelector('.backdrop');
-
-    if (!toggle || !nav) return;
-
-    const setOpen = (open) => {
-      nav.classList.toggle('open', open);
-      document.body.classList.toggle('no-scroll', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (backdrop) {
-        backdrop.hidden = !open;
-        backdrop.classList.toggle('show', open);
-      }
-    };
-
-    toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
-    backdrop?.addEventListener('click', () => setOpen(false));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
-    window.addEventListener('resize', () => { if (window.innerWidth > 840) setOpen(false); });
-  })();
-  </script>
 
 </body>
 </html>
