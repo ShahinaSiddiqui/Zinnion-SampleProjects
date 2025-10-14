@@ -1,71 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zinnion Showcase</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zinnion Showcase — Sample Projects</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=2025-10" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="brand">Zinnion</div>
-    <nav class="nav-links">
-      <a href="#">Sample Projects</a>
-      <a href="#">Get in Touch</a>
-      <a href="#">Download Brochure</a>
-    </nav>
+  <!-- Backdrop for mobile nav -->
+  <div class="backdrop" hidden></div>
+
+  <!-- Header (brand left, nav right, same alignment as portfolio) -->
+  <header class="site-header" role="banner">
+    <div class="header-row">
+      <a class="brand" href="index.html">Zinnion</a>
+      <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">☰</button>
+      <nav id="site-nav" class="nav" aria-label="Main">
+        <a class="nav-link active" href="index.html">Sample Projects</a>
+        <a class="nav-link" href="#contact">Get in Touch</a>
+        <a class="nav-link" href="Zinnion-Showcase.pdf" download>Download brochure</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <h1>We design learning experiences...<br><span>and we like to do it perfectly!</span></h1>
+    We design learning experiences... and we like to do it perfectly !
   </section>
 
-  <!-- Projects Section -->
-  <section class="projects">
-    <!-- Project 1 -->
-    <div class="project">
-      <div class="thumb">
-        <img src="assets/projects/3in1TradingAccount/Thumbnail3in1.png" alt="3-in-1 Trading Account Thumbnail">
-      </div>
-      <div class="details">
-        <h2>Stock Market Simulation Game for the 3-in-1 Trading Account</h2>
-        <p>An immersive e-learning experience designed as a simulation-based game where employees engage in a realistic stock-market environment. The module helps learners build confidence in pitching the 3-in-1 Trading Account to clients.</p>
-        <a href="assets/projects/3in1TradingAccount/3in1.mp4" class="btn" target="_blank">View it in Action</a>
-      </div>
-    </div>
+  <!-- Projects (7 items; left thumbnail, right copy) -->
+  <main class="container projects-list">
 
-    <!-- Project 2 -->
-    <div class="project">
-      <div class="thumb">
-        <img src="assets/projects/counterfeit/ThumbnailCounterfeit.png" alt="Counterfeit Currency Thumbnail">
-      </div>
-      <div class="details">
+    <!-- 1. Counterfeit Currency -->
+    <article class="project">
+      <a class="project-media" href="assets/projects/counterfeit/counterfeit.mp4" target="_blank" aria-label="Play Counterfeit project video">
+        <img src="assets/projects/counterfeit/ThumbnailCounterfeit.png" alt="Counterfeit Currency thumbnail" />
+      </a>
+      <div class="project-copy">
         <h2>Counterfeit Currency: Game-Based E-Learning Module</h2>
-        <p>A heist-inspired game-based module where employees learned to detect counterfeit notes by ‘printing,’ protecting, and testing currency through immersive challenges and real teller scenarios.</p>
-        <a href="assets/projects/counterfeit/counterfeit.mp4" class="btn" target="_blank">View it in Action</a>
+        <p>A heist-inspired game where employees learned to detect counterfeit notes by ‘printing’, protecting, and testing currency through immersive challenges and real teller scenarios.</p>
+        <p><a class="btn" href="assets/projects/counterfeit/counterfeit.mp4" target="_blank">View it in action</a></p>
       </div>
-    </div>
+    </article>
 
-    <!-- Project 3 -->
-    <div class="project">
-      <div class="thumb">
-        <img src="assets/projects/VikramBetal/ThumbnailVikramBetal.png" alt="Vikram-Betal Thumbnail">
+    <!-- 2. Vikram–Betal -->
+    <article class="project alt">
+      <a class="project-media" href="assets/projects/VikramBetal/VikramBetal.mp4" target="_blank" aria-label="Play Vikram–Betal project video">
+        <img src="assets/projects/VikramBetal/ThumbnailVikramBetal.png" alt="Vikram–Betal thumbnail" />
+      </a>
+      <div class="project-copy">
+        <h2>An Indian Folklore Story of “Vikram–Betal” Adapted into a Decision-Making Assessment</h2>
+        <p>A narrative-driven ethics assessment blending the Indian tale of Vikram and Betal with modern workplace dilemmas. Learners answered on behalf of Vikram, practicing value-based decision-making reinforced through custom 2D animation.</p>
+        <p><a class="btn" href="assets/projects/VikramBetal/VikramBetal.mp4" target="_blank">View it in action</a></p>
       </div>
-      <div class="details">
-        <h2>An Indian Folklore Story of “Vikram-Betal” Adapted into a Decision-Making Assessment</h2>
-        <p>A narrative-driven ethics assessment blending the Indian tale of Vikram and Betal with modern workplace dilemmas. Learners practiced value-based decision-making in tricky business situations reinforced through custom 2D animations.</p>
-        <a href="assets/projects/VikramBetal/VikramBetal.mp4" class="btn" target="_blank">View it in Action</a>
+    </article>
+
+    <!-- 3. 3-in-1 Trading Account -->
+    <article class="project">
+      <a class="project-media" href="assets/projects/3in1TradingAccount/3in1.mp4" target="_blank" aria-label="Play 3-in-1 Trading Account video">
+        <img src="assets/projects/3in1TradingAccount/Thumbnail3in1.png" alt="3-in-1 Trading Account thumbnail" />
+      </a>
+      <div class="project-copy">
+        <h2>Stock Market Simulation Game for the 3-in-1 Trading Account</h2>
+        <p>An immersive simulation-based experience where employees practiced in a realistic stock-market environment, gaining confidence to pitch the 3-in-1 trading account to clients.</p>
+        <p><a class="btn" href="assets/projects/3in1TradingAccount/3in1.mp4" target="_blank">View it in action</a></p>
       </div>
-    </div>
-  </section>
+    </article>
+
+    <!-- 4. Home Loan -->
+    <article class="project alt">
+      <a class="project-media" href="assets/projects/HomeLoan/HomeLoan.mp4" target="_blank" aria-label="Play Home Loan video">
+        <img src="assets/projects/HomeLoan/ThumbnailHomeLoan.png" alt="Home Loan module thumbnail" />
+      </a>
+      <div class="project-copy">
+        <h2>Interactive E-Learning Module on Home Loan Concepts</h2>
+        <p>Complex home-loan concepts distilled into crisp micro-lessons and scenarios so frontline employees can explain products clearly and drive confident conversations with clients.</p>
+        <p><a class="btn" href="assets/projects/HomeLoan/HomeLoan.mp4" target="_blank">View it in action</a></p>
+      </div>
+    </article>
+
+    <!-- 5. Indus Marathon -->
+    <article class="project">
+      <a class="project-media" href="assets/projects/IndusMarathon/IndusMarathon.mp4" target="_blank" aria-label="Play Indus Marathon video">
+        <img src="assets/projects/IndusMarathon/ThumbnailIndusMarathon.png" alt="Indus Marathon module thumbnail" />
+      </a>
+      <div class="project-copy">
+        <h2>Health Marathon: Game-Based E-Learning on Health Insurance Concepts</h2>
+        <p>A gamified marathon where learners ‘ran’ through lifestyle choices and checkpoints, turning health insurance fundamentals into engaging, memorable learning.</p>
+        <p><a class="btn" href="assets/projects/IndusMarathon/IndusMarathon.mp4" target="_blank">View it in action</a></p>
+      </div>
+    </article>
+
+    <!-- 6. Yaksha Prashna -->
+    <article class="project alt">
+      <a class="project-media" href="assets/projects/YakshaPrashna/YakshaPrashna.mp4" target="_blank" aria-label="Play Yaksha Prashna video">
+        <img src="assets/projects/YakshaPrashna/ThumbnailYakshaPrashna.png" alt="Yaksha Prashna thumbnail" />
+      </a>
+      <div class="project-copy">
+        <h2>Yaksha Prashna: Mythology-Inspired Ethics Assessment</h2>
+        <p>Inspired by the Mahabharata, learners faced moral questions to ‘save their team,’ mirroring workplace dilemmas and building reflective decision-making.</p>
+        <p><a class="btn" href="assets/projects/YakshaPrashna/YakshaPrashna.mp4" target="_blank">View it in action</a></p>
+      </div>
+    </article>
+
+    <!-- 7. PPT Trading Account -->
+    <article class="project">
+      <a class="project-media" href="assets/projects/PPTTradingAccount/PPT.mp4" target="_blank" aria-label="Play PPT Trading Account video">
+        <img src="assets/projects/PPTTradingAccount/ThumbnailPPT.png" alt="PPT Trading Account thumbnail" />
+      </a>
+      <div class="project-copy">
+        <h2>Training PPT: 3-in-1 Trading Account</h2>
+        <p>A facilitator-ready PPT with trainer notes, built after the simulation’s success, to enable interactive sessions on client profiling, pitching, and objections.</p>
+        <p><a class="btn" href="assets/projects/PPTTradingAccount/PPT.mp4" target="_blank">View it in action</a></p>
+      </div>
+    </article>
+
+    <!-- Contact anchor for header link -->
+    <div id="contact" class="contact-anchor" aria-hidden="true"></div>
+  </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <p>© Zinnion Learning Solutions</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-row">
+      <small>© Zinnion Learning Solutions</small>
+    </div>
   </footer>
 
+  <!-- Mobile menu toggler (same behavior as portfolio) -->
+  <script>
+  (() => {
+    const toggle   = document.querySelector('.menu-toggle');
+    const nav      = document.getElementById('site-nav');
+    const backdrop = document.querySelector('.backdrop');
+
+    if (!toggle || !nav) return;
+
+    const setOpen = (open) => {
+      nav.classList.toggle('open', open);
+      document.body.classList.toggle('no-scroll', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (backdrop) {
+        backdrop.hidden = !open;
+        backdrop.classList.toggle('show', open);
+      }
+    };
+
+    toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+    backdrop?.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 840) setOpen(false); });
+  })();
+  </script>
 </body>
 </html>
