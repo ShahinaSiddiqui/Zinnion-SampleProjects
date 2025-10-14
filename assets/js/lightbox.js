@@ -4,25 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("lightbox-video");
   const closeBtn = lightbox.querySelector(".close-btn");
 
-  // Open video in popup
+  const openLightbox = (src) => {
+    video.src = src;
+    lightbox.hidden = false;
+    // force reflow so CSS transition starts cleanly
+    void lightbox.offsetWidth;
+    lightbox.classList.add("show");
+    document.body.classList.add("no-scroll");
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("show");
+    video.pause();
+    video.src = "";
+    document.body.classList.remove("no-scroll");
+    // wait for fade-out before hiding
+    setTimeout(() => (lightbox.hidden = true), 300);
+  };
+
+  // open
   triggers.forEach(el => {
     el.addEventListener("click", () => {
       const src = el.dataset.video;
-      if (!src) return;
-      video.src = src;
-      lightbox.hidden = false;
-      document.body.classList.add("no-scroll");
+      if (src) openLightbox(src);
     });
   });
 
-  // Close popup
-  const closeLightbox = () => {
-    video.pause();
-    video.src = "";
-    lightbox.hidden = true;
-    document.body.classList.remove("no-scroll");
-  };
-
+  // close
   closeBtn.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", e => {
     if (e.target === lightbox) closeLightbox();
@@ -31,4 +39,3 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 });
-
