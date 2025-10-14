@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zinnion Home</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zinnion — Home</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" role="banner" id="top">
     <div class="header-inner">
-      <a href="#" class="brand">Zinnion</a>
-      <nav class="top-nav">
+      <a class="brand" href="#">Zinnion</a>
+      <nav class="top-nav" aria-label="Primary">
         <a href="#">Home</a>
         <a href="#">Get in Touch</a>
         <a href="#">Download Brochure</a>
@@ -20,14 +20,14 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="container">
-    <h1 class="page-title">We design learning experiences... and we like to do it perfectly!</h1>
+  <!-- ===== Main ===== -->
+  <main class="container" role="main">
+    <h1 class="page-title">We design learning experiences… and we like to do it perfectly!</h1>
 
-    <!-- PROJECT 1 -->
+    <!-- 1 -->
     <article class="project left">
       <div class="project-media">
-        <img src="assets/projects/counterfeit/ThumbnailCounterfeit.png" alt="Counterfeit thumbnail">
+        <img src="assets/projects/counterfeit/ThumbnailCounterfeit.png" alt="Counterfeit thumbnail" />
       </div>
       <div class="project-copy">
         <h2>Counterfeit Currency: Game-Based E-Learning Module</h2>
@@ -36,10 +36,10 @@
       </div>
     </article>
 
-    <!-- PROJECT 2 -->
+    <!-- 2 -->
     <article class="project right">
       <div class="project-media">
-        <img src="assets/projects/VikramBetal/ThumbnailVikramBetal.png" alt="Vikram Betal thumbnail">
+        <img src="assets/projects/VikramBetal/ThumbnailVikramBetal.png" alt="Vikram–Betal thumbnail" />
       </div>
       <div class="project-copy">
         <h2>Vikram–Betal: Decision-Making Assessment</h2>
@@ -48,10 +48,10 @@
       </div>
     </article>
 
-    <!-- PROJECT 3 -->
+    <!-- 3 -->
     <article class="project left">
       <div class="project-media">
-        <img src="assets/projects/3in1TradingAccount/Thumbnail3in1.png" alt="3-in-1 Trading Account thumbnail">
+        <img src="assets/projects/3in1TradingAccount/Thumbnail3in1.png" alt="3-in-1 Trading Account thumbnail" />
       </div>
       <div class="project-copy">
         <h2>3-in-1 Trading Account: Simulation Game</h2>
@@ -60,10 +60,10 @@
       </div>
     </article>
 
-    <!-- PROJECT 4 -->
+    <!-- 4 -->
     <article class="project right">
       <div class="project-media">
-        <img src="assets/projects/HomeLoan/ThumbnailHomeLoan.png" alt="Home Loan thumbnail">
+        <img src="assets/projects/HomeLoan/ThumbnailHomeLoan.png" alt="Home Loan thumbnail" />
       </div>
       <div class="project-copy">
         <h2>Home Loan: Product Explainer Module</h2>
@@ -72,10 +72,10 @@
       </div>
     </article>
 
-    <!-- PROJECT 5 -->
+    <!-- 5 -->
     <article class="project left">
       <div class="project-media">
-        <img src="assets/projects/IndusMarathon/ThumbnailIndusMarathon.png" alt="Indus Marathon thumbnail">
+        <img src="assets/projects/IndusMarathon/ThumbnailIndusMarathon.png" alt="Indus Marathon thumbnail" />
       </div>
       <div class="project-copy">
         <h2>Indus Marathon: Game-Based Learning</h2>
@@ -84,10 +84,10 @@
       </div>
     </article>
 
-    <!-- PROJECT 6 -->
+    <!-- 6 -->
     <article class="project right">
       <div class="project-media">
-        <img src="assets/projects/YakshaPrashna/ThumbnailYakshaPrashna.png" alt="Yaksha Prashna thumbnail">
+        <img src="assets/projects/YakshaPrashna/ThumbnailYakshaPrashna.png" alt="Yaksha Prashna thumbnail" />
       </div>
       <div class="project-copy">
         <h2>Yaksha Prashna: Mythology-Inspired Ethics Quiz</h2>
@@ -96,10 +96,10 @@
       </div>
     </article>
 
-    <!-- PROJECT 7 -->
+    <!-- 7 -->
     <article class="project left">
       <div class="project-media">
-        <img src="assets/projects/PPTTradingAccount/ThumbnailPPT.png" alt="PPT Trading thumbnail">
+        <img src="assets/projects/PPTTradingAccount/ThumbnailPPT.png" alt="PPT Trading thumbnail" />
       </div>
       <div class="project-copy">
         <h2>PPT Trading Account: Trainer-Facilitated Module</h2>
@@ -109,17 +109,17 @@
     </article>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
+  <!-- ===== Footer (fixed) ===== -->
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <small>© Zinnion Learning Solutions</small>
     </div>
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div id="video-lightbox" class="video-lightbox" hidden>
-    <div class="lightbox-content">
-      <button class="close-btn" aria-label="Close Video">&times;</button>
+  <!-- ===== Video Lightbox ===== -->
+  <div id="video-lightbox" class="video-lightbox" aria-hidden="true">
+    <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Project video">
+      <button class="close-btn" aria-label="Close video">×</button>
       <div class="video-frame">
         <video id="lightbox-video" controls playsinline preload="metadata"></video>
         <div id="video-caption" class="video-caption"></div>
