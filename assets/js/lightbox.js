@@ -1,4 +1,4 @@
-/* =========================================
+/* ========================================= 
    ZINNION VIDEO LIGHTBOX SCRIPT
    ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     video.src = src;
     caption.textContent = titleText || "Zinnion Learning Experience";
     lightbox.hidden = false;
-    void lightbox.offsetWidth; // reset for animation
+    void lightbox.offsetWidth; // reset animation
     lightbox.classList.add("show");
     document.body.classList.add("no-scroll");
   };
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  // Open on button click only
+  // Open only on button click
   triggers.forEach(btn => {
     btn.addEventListener("click", e => {
       e.stopPropagation();
