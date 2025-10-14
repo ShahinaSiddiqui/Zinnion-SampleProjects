@@ -96,20 +96,129 @@ body{
 }
 .site-footer small{ white-space:nowrap }
 
-/* ===== Lightbox ===== */
-.video-lightbox{
-  position:fixed; inset:0; display:none;
-  background:rgba(0,0,0,.84); z-index:2000; opacity:0; transition:opacity .25s ease;
-  align-items:center; justify-content:center; padding:22px;
+/* ===============================
+   LIGHTBOX POPUP (FINAL DESIGN)
+   =============================== */
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 30px;
 }
-.video-lightbox.show{ display:flex; opacity:1 }
 
-.lightbox-content{ position:relative; width:min(100%, 940px) }
-.close-btn{
-  position:absolute; top:-12px; right:-12px;
-  width:44px; height:44px; border-radius:999px; border:0; cursor:pointer;
-  background:#000; color:#fff; font-size:26px; line-height:1;
-  box-shadow:0 8px 22px rgba(0,0,0,.4);
+.video-lightbox.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* --- Center the content --- */
+.lightbox-content {
+  position: relative;
+  width: 85%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
+}
+
+/* --- Brand frame around the video --- */
+.video-frame {
+  position: relative;
+  width: 100%;
+  border: 6px solid #d58a00; /* brand color */
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 25px rgba(213, 138, 0, 0.5);
+  animation: glowPulse 1.3s ease-out;
+}
+
+/* --- The video itself --- */
+#lightbox-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* --- Caption band below the video --- */
+.video-caption {
+  width: 100%;
+  text-align: center;
+  margin-top: 12px;
+  padding: 10px 0;
+  border-radius: 8px;
+  background: rgba(213, 138, 0, 0.25); /* lighter orange */
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  font-size: 1rem;
+  animation: fadeIn 0.5s ease;
+}
+
+/* --- Close button --- */
+.close-btn {
+  position: absolute;
+  top: -22px;
+  right: -22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.08);
+  background: #d58a00;
+  color: #000;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(213, 138, 0, 0);
+  }
+  35% {
+    box-shadow: 0 0 35px rgba(213, 138, 0, 0.65);
+  }
+  70% {
+    box-shadow: 0 0 55px rgba(213, 138, 0, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(213, 138, 0, 0.45);
+  }
+}
+
 }
 .video-frame{
   border:6px solid var(--brand); border-radius:14px; padding:12px;
