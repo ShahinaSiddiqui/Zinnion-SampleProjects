@@ -39,6 +39,7 @@ body {
   font-size: 18px;
   color: #000;
   text-decoration: none;
+  letter-spacing: 0.4px;
 }
 
 .nav {
@@ -51,6 +52,7 @@ body {
   color: #000;
   text-decoration: none;
   font-weight: 600;
+  letter-spacing: 0.4px;
 }
 
 .nav-link:hover,
@@ -116,10 +118,14 @@ body {
 /* ===== Hero ===== */
 .hero {
   text-align: center;
-  padding: 60px 20px 40px;
+  padding: 50px 20px 30px;
   background: #111;
   color: var(--orange);
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  word-spacing: 1.5px;
 }
 
 /* ===== Project Card ===== */
@@ -131,29 +137,42 @@ body {
 
 .project-card {
   background: #111;
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 20px;
-  padding: 20px;
+  padding: 26px;
   align-items: center;
   text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .project-card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .project-copy h3 {
   color: var(--orange);
   margin-bottom: 10px;
+  letter-spacing: 0.5px;
 }
 
 .project-copy p {
   color: #ddd;
   margin-bottom: 18px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
 }
 
 .btn {
@@ -164,10 +183,14 @@ body {
   text-decoration: none;
   padding: 10px 22px;
   border-radius: 999px;
+  letter-spacing: 0.4px;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
 
 /* ===== Footer ===== */
 .site-footer {
@@ -185,6 +208,7 @@ body {
 .footer-row small {
   color: #ccc;
   font-size: 14px;
+  letter-spacing: 0.3px;
 }
 
 /* ===== Responsive tweaks ===== */
