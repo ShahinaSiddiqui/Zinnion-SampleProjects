@@ -1,123 +1,86 @@
-/* ===== Lightbox ===== */
-.video-lightbox {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 2000;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 30px;
-}
+/* ========================================= 
+   ZINNION VIDEO LIGHTBOX SCRIPT (Stable)
+   ========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const triggers = document.querySelectorAll(".btn[data-video]");
+  const lightbox = document.getElementById("video-lightbox");
+  const video = document.getElementById("lightbox-video");
+  const caption = document.getElementById("video-caption");
+  const closeBtn = lightbox.querySelector(".close-btn");
 
-/* Show state */
-.video-lightbox.show {
-  display: flex;
-  opacity: 1;
-}
+  // --- Function: Open Lightbox ---
+  const openLightbox = (src, titleText) => {
+    if (!src) return;
 
-/* Center and size the popup */
-.lightbox-content {
-  position: relative;
-  width: 80%;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: fadeIn 0.4s ease;
-}
+    // Set video source
+    video.src = src;
+    video.load();
 
-/* ===== Frame and Video ===== */
-.video-frame {
-  width: 100%;
-  border: 8px solid #d58a00; /* Brand color */
-  border-radius: 14px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 25px rgba(213, 138, 0, 0.45);
-  animation: glowPulse 1.4s ease-out;
-}
+    // Set caption
+    caption.textContent = titleText || "Zinnion Learning Experience";
 
-/* Video always fills frame */
-#lightbox-video {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  background: #000;
-}
+    // Show lightbox
+    lightbox.hidden = false;
+    void lightbox.offsetWidth; // trigger reflow for animation
+    lightbox.classList.add("show");
 
-/* ===== Caption Band ===== */
-.video-caption {
-  width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 10px;
-  border-radius: 8px;
-  background: rgba(213, 138, 0, 0.25); /* Lighter shade of brand */
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  font-size: 0.95rem;
-  animation: fadeIn 0.5s ease;
-}
+    // Disable body scroll
+    document.body.classList.add("no-scroll");
 
-/* ===== Close Button ===== */
-.close-btn {
-  position: absolute;
-  top: -18px;
-  right: -18px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: #000;
-  color: #fff;
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-.close-btn:hover {
-  transform: scale(1.08);
-  background: #d58a00;
-  color: #000;
-}
+    // Auto play after small delay for stability
+    setTimeout(() => {
+      video.play().catch(() => {});
+    }, 250);
+  };
 
-/* Prevent background scrolling while video open */
-.no-scroll {
-  overflow: hidden;
-}
+  // --- Function: Close Lightbox ---
+  const closeLightbox = () => {
+    video.pause();
+    video.currentTime = 0;
+    video.removeAttribute("src");
+    caption.textContent = "";
 
-/* ===== Animations ===== */
+    lightbox.classList.remove("show");
+    document.body.classList.remove("no-scroll");
 
-/* Fade-in animation for popup */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
+    setTimeout(() => {
+      lightbox.hidden = true;
+    }, 300);
+  };
+
+  // --- Button Click Events ---
+  triggers.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const src = btn.dataset.video;
+      const titleEl = btn.closest(".project-copy")?.querySelector("h2");
+      const titleText = titleEl ? titleEl.textContent.trim() : "";
+
+      openLightbox(src, titleText);
+    });
+  });
+
+  // --- Close Button ---
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeLightbox();
+    });
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
-/* Soft glowing pulse on open */
-@keyframes glowPulse {
-  0% {
-    box-shadow: 0 0 0 rgba(213, 138, 0, 0);
-  }
-  30% {
-    box-shadow: 0 0 35px rgba(213, 138, 0, 0.6);
-  }
-  60% {
-    box-shadow: 0 0 60px rgba(213, 138, 0, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 25px rgba(213, 138, 0, 0.45);
-  }
-}
+  // --- Click outside closes popup ---
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // --- ESC key closes popup ---
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !lightbox.hidden) {
+      closeLightbox();
+    }
+  });
+});
