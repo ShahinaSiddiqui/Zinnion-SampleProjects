@@ -2,7 +2,7 @@
    ZINNION VIDEO LIGHTBOX SCRIPT
    ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
-  const triggers = document.querySelectorAll(".btn[data-video]");
+  const buttons = document.querySelectorAll(".btn[data-video]");
   const lightbox = document.getElementById("video-lightbox");
   const video = document.getElementById("lightbox-video");
   const caption = document.getElementById("video-caption");
@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     video.src = src;
     caption.textContent = titleText || "Zinnion Learning Experience";
     lightbox.hidden = false;
-    void lightbox.offsetWidth; // reset animation
     lightbox.classList.add("show");
     document.body.classList.add("no-scroll");
   };
@@ -26,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  triggers.forEach(btn => {
+  buttons.forEach(btn => {
     btn.addEventListener("click", e => {
+      e.preventDefault();
       e.stopPropagation();
       const src = btn.dataset.video;
-      const titleEl = btn.closest(".project-copy")?.querySelector("h2");
-      const titleText = titleEl ? titleEl.textContent.trim() : "";
-      if (src) openLightbox(src, titleText);
+      const title = btn.closest(".project-copy")?.querySelector("h2")?.textContent.trim();
+      if (src) openLightbox(src, title);
     });
   });
 
