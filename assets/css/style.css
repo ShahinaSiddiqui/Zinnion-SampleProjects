@@ -112,6 +112,20 @@ body {
   .top-nav a { font-size: 14px; font-weight: 600; }
   .btn { position: relative; z-index: 10; pointer-events: auto; }
 
+  /* 🔸 Consistent mobile order: Thumbnail → Heading → Text → Button */
+  .project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+  .project-media { order: 1; width: 100%; }
+  .project-copy { order: 2; width: 100%; }
+
+  .project-copy h2 { margin-top: 14px; }
+  .project-copy p { margin-bottom: 14px; }
+
+  /* Lightbox */
   .video-lightbox { display: flex; align-items: center; justify-content: center; padding: 0; height: 100vh; }
   .lightbox-content { position: relative; width: 92%; max-width: 640px; max-height: 90vh; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: visible; }
   .video-frame { width: 100%; border: 4px solid var(--brand); border-radius: 12px; padding: 6px; background: rgba(255,255,255,.04); box-shadow: 0 0 25px rgba(213,138,0,.45); display: flex; flex-direction: column; justify-content: center; align-items: center; }
