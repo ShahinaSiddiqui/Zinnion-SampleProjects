@@ -175,7 +175,7 @@ body {
 .video-lightbox {
   position: fixed;
   inset: 0;
-  display: none;
+  display: none;              /* ensure it’s not visible */
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.9);
@@ -183,10 +183,13 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 30px;
+  pointer-events: none;       /* disable interaction until shown */
 }
+
 .video-lightbox.show {
   display: flex;
   opacity: 1;
+  pointer-events: auto;       /* re-enable taps/clicks */
 }
 
 .lightbox-content {
@@ -258,6 +261,7 @@ body {
   color: #000;
   border-color: #000;
 }
+
 
 /* --- Animations --- */
 @keyframes fadeIn {
