@@ -13,9 +13,12 @@
     <div class="header-inner">
       <a class="brand" href="#">Zinnion</a>
       <nav class="top-nav" aria-label="Primary">
-        <a href="#">Home</a>
-        <a href="#">Get in Touch</a>
-        <a href="#">Download Brochure</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="menu-links">
+          <a href="#">Home</a>
+          <a href="#">Get in Touch</a>
+          <a href="#">Download Brochure</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -128,5 +131,18 @@
   </div>
 
   <script src="assets/js/lightbox.js"></script>
+
+  <!-- ===== Mobile Menu Script ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const menuLinks = document.querySelector(".menu-links");
+      if (menuToggle && menuLinks) {
+        menuToggle.addEventListener("click", () => {
+          menuLinks.classList.toggle("show");
+        });
+      }
+    });
+  </script>
 </body>
 </html>
