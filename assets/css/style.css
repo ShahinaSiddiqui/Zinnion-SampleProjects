@@ -378,3 +378,55 @@ body {
     border: 2px solid #fff; /* ensures visibility on dark video */
   }
 }
+/* ===============================
+   RESPONSIVE HEADER WITH HAMBURGER MENU
+   =============================== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #000;
+  font-weight: 700;
+}
+
+.menu-links {
+  display: flex;
+  gap: 22px;
+}
+
+/* --- Mobile layout --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-links {
+    display: none;
+    flex-direction: column;
+    background: var(--brand);
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1500;
+  }
+
+  .menu-links a {
+    padding: 8px 0;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-links a:last-child {
+    border-bottom: none;
+  }
+
+  .menu-links.show {
+    display: flex;
+  }
+}
