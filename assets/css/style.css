@@ -260,7 +260,7 @@ body {
 
   /* >>> FINAL CLOSE-BUTTON POSITION (tighter, not clipped) <<< */
   .close-btn{
-    top: -8px;             /* was -22 (desktop) / -14 (prev mobile) */
+    top: -4px;             /* was -22 (desktop) / -14 (prev mobile) */
     right: -8px;           /* moved closer to the frame edge */
     width: 36px; height: 36px;
     border: 2px solid #fff;
