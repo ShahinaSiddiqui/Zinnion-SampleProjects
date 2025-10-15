@@ -234,7 +234,7 @@ body {
 
   .close-btn {
     position: absolute;
-    top: -0px;
+    top: 4px;
     right: -10px;
     width: 36px;
     height: 36px;
