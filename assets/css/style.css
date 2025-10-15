@@ -128,7 +128,7 @@ body {
   animation: fadeIn .5s ease;
 }
 
-/* Close button INSIDE video-frame */
+/* Close button (desktop) */
 .video-frame .close-btn {
   position: absolute;
   top: -14px;
@@ -248,12 +248,31 @@ body {
     line-height: 1.4;
   }
 
-  /* ✅ Close button adjusted for mobile – frame-aligned */
+  /* ✅ Close button adjusted for mobile – perfectly aligned */
   .video-frame .close-btn {
-    top: -8px;
-    right: -8px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
     width: 34px;
     height: 34px;
     font-size: 22px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2100;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    transition: transform .2s ease, background .2s ease;
+  }
+
+  .video-frame .close-btn:hover {
+    transform: scale(1.08);
+    background: #d58a00;
+    color: #000;
+    border-color: #000;
   }
 }
