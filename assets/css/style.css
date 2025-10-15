@@ -220,7 +220,7 @@ body {
 
   .video-caption {
     width: 100%;
-    background: #f3b740; /* same as desktop */
+    background: #f3b740;
     color: #000;
     font-weight: 700;
     font-size: 0.92rem;
@@ -232,10 +232,11 @@ body {
     line-height: 1.4;
   }
 
+  /* ⬇️ Close button pulled down & in, flush with the frame */
   .close-btn {
     position: absolute;
-    top: 4px;
-    right: -10px;
+    top: 22px;     /* was 0/4 — bringing it down to sit on the frame */
+    right: -8px;   /* slightly inside so it’s not cut */
     width: 36px;
     height: 36px;
     border-radius: 50%;
