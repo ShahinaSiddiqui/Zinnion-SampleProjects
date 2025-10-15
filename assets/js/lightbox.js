@@ -1,5 +1,5 @@
-/* ========================================= 
-   ZINNION VIDEO LIGHTBOX SCRIPT (Stable)
+/* =========================================
+   ZINNION VIDEO LIGHTBOX SCRIPT (MOBILE-FRIENDLY)
    ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const triggers = document.querySelectorAll(".btn[data-video]");
@@ -8,79 +8,57 @@ document.addEventListener("DOMContentLoaded", () => {
   const caption = document.getElementById("video-caption");
   const closeBtn = lightbox.querySelector(".close-btn");
 
-  // --- Function: Open Lightbox ---
+  // helper: open popup
   const openLightbox = (src, titleText) => {
-    if (!src) return;
-
-    // Set video source
     video.src = src;
-    video.load();
-
-    // Set caption
     caption.textContent = titleText || "Zinnion Learning Experience";
-
-    // Show lightbox
     lightbox.hidden = false;
-    void lightbox.offsetWidth; // trigger reflow for animation
+    void lightbox.offsetWidth; // reflow for animation
     lightbox.classList.add("show");
-
-    // Disable body scroll
     document.body.classList.add("no-scroll");
-
-    // Auto play after small delay for stability
-    setTimeout(() => {
-      video.play().catch(() => {});
-    }, 250);
   };
 
-  // --- Function: Close Lightbox ---
+  // helper: close popup
   const closeLightbox = () => {
-    video.pause();
-    video.currentTime = 0;
-    video.removeAttribute("src");
-    caption.textContent = "";
-
     lightbox.classList.remove("show");
+    video.pause();
+    video.src = "";
+    caption.textContent = "";
     document.body.classList.remove("no-scroll");
-
-    setTimeout(() => {
-      lightbox.hidden = true;
-    }, 300);
+    setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  // --- Button Click Events ---
-  triggers.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const src = btn.dataset.video;
-      const titleEl = btn.closest(".project-copy")?.querySelector("h2");
-      const titleText = titleEl ? titleEl.textContent.trim() : "";
-
-      openLightbox(src, titleText);
+  // --- Fix for mobile taps ---
+  // use both click + touchstart for broader coverage
+  triggers.forEach(btn => {
+    ["click", "touchstart"].forEach(evtType => {
+      btn.addEventListener(evtType, e => {
+        e.preventDefault();
+        e.stopPropagation();
+        const src = btn.dataset.video;
+        const titleEl = btn.closest(".project-copy")?.querySelector("h2");
+        const titleText = titleEl ? titleEl.textContent.trim() : "";
+        if (src) openLightbox(src, titleText);
+      }, { passive: true });
     });
   });
 
-  // --- Close Button ---
-  if (closeBtn) {
-    closeBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeLightbox();
-    });
-  }
-
-  // --- Click outside closes popup ---
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
+  // close triggers
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 
-  // --- ESC key closes popup ---
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !lightbox.hidden) {
-      closeLightbox();
+  // safety: make sure the overlay never intercepts taps when hidden
+  const observer = new MutationObserver(() => {
+    if (lightbox.hidden || !lightbox.classList.contains("show")) {
+      lightbox.style.pointerEvents = "none";
+    } else {
+      lightbox.style.pointerEvents = "auto";
     }
   });
+  observer.observe(lightbox, { attributes: true, attributeFilter: ["hidden", "class"] });
 });
