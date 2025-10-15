@@ -291,9 +291,6 @@ body {
 }
 
 /* ===============================
-   MOBILE OPTIMIZATION (FINAL)
-   =============================== */
-/* ===============================
    MOBILE VIEW: FINAL LIGHTBOX FIX
    =============================== */
 @media (max-width: 768px) {
@@ -385,6 +382,8 @@ body {
     background: rgba(0, 0, 0, 0.8);
     z-index: 2100;
   }
+}
+
 }
 
 }
