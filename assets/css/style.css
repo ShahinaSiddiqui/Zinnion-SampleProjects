@@ -233,12 +233,17 @@ body {
   }
 
   .close-btn {
-    top: -8px;
-    right: -14px;
+    position: absolute;
+    top: -6px;
+    right: -10px;
     width: 36px;
     height: 36px;
+    border-radius: 50%;
     border: 2px solid #fff;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 26px;
+    line-height: 1;
     z-index: 2100;
   }
 }
