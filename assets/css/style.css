@@ -127,15 +127,31 @@ body {
   font-weight: 700; letter-spacing: .4px; font-size: 1rem;
   animation: fadeIn .5s ease;
 }
-.close-btn {
-  position: absolute; top: -22px; right: -22px;
-  width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff;
-  background: #000; color: #fff; font-size: 26px; line-height: 1;
-  cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.4);
+
+/* Close button INSIDE video-frame */
+.video-frame .close-btn {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
   transition: transform .2s ease, background .2s ease;
   z-index: 2100;
 }
-.close-btn:hover { transform: scale(1.08); background: #d58a00; color: #000; border-color: #000; }
+.video-frame .close-btn:hover {
+  transform: scale(1.08);
+  background: #d58a00;
+  color: #000;
+  border-color: #000;
+}
 
 /* --- Animations --- */
 @keyframes fadeIn {
@@ -232,19 +248,12 @@ body {
     line-height: 1.4;
   }
 
-  /* ⬇️ Close button pulled down & in, flush with the frame */
-  .close-btn {
-    position: absolute;
-    top: 22px;     /* was 0/4 — bringing it down to sit on the frame */
-    right: -8px;   /* slightly inside so it’s not cut */
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    font-size: 26px;
-    line-height: 1;
-    z-index: 2100;
+  /* ✅ Close button adjusted for mobile – frame-aligned */
+  .video-frame .close-btn {
+    top: -8px;
+    right: -8px;
+    width: 34px;
+    height: 34px;
+    font-size: 22px;
   }
 }
