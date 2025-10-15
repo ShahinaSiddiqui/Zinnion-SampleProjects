@@ -67,7 +67,7 @@ body {
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: calc(64px + 18px) 20px calc(52px + 18px); /* header + footer clearances */
+  padding: calc(64px + 18px) 20px calc(52px + 18px);
 }
 
 /* Title */
@@ -153,8 +153,8 @@ body {
   position: fixed;
   inset: auto 0 0 0;
   z-index: 1000;
-  background: #1a1e23; /* Softer dark grey, blends with background */
-  color: #ccc; /* slightly muted text */
+  background: #1a1e23; /* subtle dark grey */
+  color: #ccc;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 .footer-inner {
@@ -184,13 +184,11 @@ body {
   transition: opacity 0.3s ease;
   padding: 30px;
 }
-
 .video-lightbox.show {
   display: flex;
   opacity: 1;
 }
 
-/* --- Center the content --- */
 .lightbox-content {
   position: relative;
   width: 85%;
@@ -202,7 +200,6 @@ body {
   min-height: 540px;
 }
 
-/* --- Brand frame around the video --- */
 .video-frame {
   position: relative;
   width: 100%;
@@ -215,7 +212,6 @@ body {
   min-height: 480px;
 }
 
-/* --- The video itself --- */
 #lightbox-video {
   width: 100%;
   height: auto;
@@ -225,7 +221,6 @@ body {
   z-index: 1;
 }
 
-/* --- Caption band below the video --- */
 .video-caption {
   width: 100%;
   text-align: center;
@@ -240,7 +235,6 @@ body {
   animation: fadeIn 0.5s ease;
 }
 
-/* --- Close button --- */
 .close-btn {
   position: absolute;
   top: -22px;
@@ -265,10 +259,6 @@ body {
   border-color: #000;
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
 /* --- Animations --- */
 @keyframes fadeIn {
   from {
@@ -280,170 +270,57 @@ body {
     transform: scale(1);
   }
 }
-
 @keyframes glowPulse {
-  0% {
-    box-shadow: 0 0 0 rgba(213, 138, 0, 0);
-  }
-  35% {
-    box-shadow: 0 0 35px rgba(213, 138, 0, 0.65);
-  }
-  70% {
-    box-shadow: 0 0 55px rgba(213, 138, 0, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 25px rgba(213, 138, 0, 0.45);
-  }
+  0% { box-shadow: 0 0 0 rgba(213,138,0,0); }
+  35% { box-shadow: 0 0 35px rgba(213,138,0,0.65); }
+  70% { box-shadow: 0 0 55px rgba(213,138,0,0.4); }
+  100% { box-shadow: 0 0 25px rgba(213,138,0,0.45); }
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 860px) {
-  .project {
-    grid-template-columns: 1fr;
-  }
-  .project-media img {
-    max-width: 100%;
-  }
-  .top-nav {
-    gap: 14px;
-  }
-}
 /* ===============================
-   MOBILE FIXES (DO NOT TOUCH DESKTOP)
+   DESKTOP RESPONSIVE ADJUSTMENT
+   =============================== */
+@media (max-width: 860px) {
+  .project { grid-template-columns: 1fr; }
+  .project-media img { max-width: 100%; }
+  .top-nav { gap: 14px; }
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION (FINAL)
    =============================== */
 @media (max-width: 768px) {
 
-  /* --- Header cleanup --- */
+  /* Header adjustments */
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
     padding: 10px 16px;
   }
+  .brand { font-size: 18px; margin-bottom: 4px; }
+  .top-nav { flex-wrap: wrap; justify-content: flex-start; gap: 10px; }
+  .top-nav a { font-size: 14px; font-weight: 600; }
 
-  .brand {
-    font-size: 18px;
-    margin-bottom: 4px;
+  /* Fix button interaction */
+  .btn {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
   }
 
-  .top-nav {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  .top-nav a {
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  /* --- Video Lightbox cleanup --- */
-  .lightbox-content {
-    width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  .video-frame {
-    padding: 8px;
-    border-width: 4px;
-  }
-
-  #lightbox-video {
-    width: 100%;
-    height: auto;
-    max-height: 60vh; /* keeps video within screen */
-    object-fit: contain;
-  }
-
-  .video-caption {
-    margin-top: 8px;
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-
-  /* --- Center the popup vertically with no gap below --- */
-  .video-lightbox {
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-  }
-
-  /* --- Fix close button visibility --- */
-  .close-btn {
-    top: -18px;
-    right: -18px;
-    width: 38px;
-    height: 38px;
-    border: 2px solid #fff; /* ensures visibility on dark video */
-  }
-}
-/* ===============================
-   RESPONSIVE HEADER WITH HAMBURGER MENU
-   =============================== */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: #000;
-  font-weight: 700;
-}
-
-.menu-links {
-  display: flex;
-  gap: 22px;
-}
-
-/* --- Mobile layout --- */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .menu-links {
-    display: none;
-    flex-direction: column;
-    background: var(--brand);
-    position: absolute;
-    top: 42px;
-    left: 0;
-    right: 0;
-    padding: 10px 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1500;
-  }
-
-  .menu-links a {
-    padding: 8px 0;
-    font-size: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .menu-links a:last-child {
-    border-bottom: none;
-  }
-/* ===============================
-   MOBILE FIX: LIGHTBOX ALIGNMENT
-   =============================== */
-@media (max-width: 768px) {
-
-  /* Center popup neatly */
+  /* Lightbox layout fix */
   .video-lightbox {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 12px;
   }
-
   .lightbox-content {
     width: 92%;
     max-width: 95%;
     margin: 0 auto;
   }
-
   .video-frame {
     padding: 8px;
     border-width: 4px;
@@ -451,28 +328,24 @@ body {
     background: rgba(255,255,255,0.04);
     box-shadow: 0 0 25px rgba(213,138,0,0.4);
   }
-
   #lightbox-video {
     width: 100%;
-    max-height: 65vh;  /* keeps it nicely within the screen */
+    max-height: 65vh;
     object-fit: contain;
     border-radius: 8px;
     display: block;
   }
-
   .video-caption {
-    background: rgba(213,138,0,0.25);  /* lighter orange */
-    color: #000;                      /* for better contrast */
+    background: rgba(213,138,0,0.25);
+    color: #000;
     font-weight: 700;
     font-size: 0.9rem;
     text-align: center;
-    margin-top: 6px;                  /* small top gap only */
-    margin-bottom: 0;                 /* remove extra spacing below */
+    margin-top: 6px;
+    margin-bottom: 0;
     padding: 8px 10px;
     border-radius: 6px;
   }
-
-  /* Fix close button position */
   .close-btn {
     top: -16px;
     right: -16px;
@@ -481,10 +354,5 @@ body {
     border: 2px solid #fff;
     background: rgba(0,0,0,0.8);
     z-index: 2100;
-  }
-}
-
-  .menu-links.show {
-    display: flex;
   }
 }
