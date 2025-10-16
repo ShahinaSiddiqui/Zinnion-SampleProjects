@@ -1,5 +1,5 @@
 /* =========================================
-   ZINNION VIDEO LIGHTBOX SCRIPT (FINAL)
+   ZINNION VIDEO LIGHTBOX SCRIPT (FINAL FIXED)
    ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const triggers = document.querySelectorAll(".btn[data-video]");
@@ -28,21 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  // --- Open via buttons ---
+  // --- Open via click/tap only ---
   triggers.forEach(btn => {
-    ["click", "touchstart"].forEach(evtType => {
-      btn.addEventListener(evtType, e => {
-        e.preventDefault();
-        e.stopPropagation();
-        const src = btn.dataset.video;
-        const titleEl = btn.closest(".project-copy")?.querySelector("h2");
-        const titleText = titleEl ? titleEl.textContent.trim() : "";
-        if (src) openLightbox(src, titleText);
-      }, { passive: true });
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const src = btn.dataset.video;
+      const titleEl = btn.closest(".project-copy")?.querySelector("h2");
+      const titleText = titleEl ? titleEl.textContent.trim() : "";
+      if (src) openLightbox(src, titleText);
     });
   });
 
-  // --- Close only via button or Esc key ---
+  // --- Close only via button or ESC key ---
   closeBtn.addEventListener("click", closeLightbox);
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
@@ -53,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.stopPropagation();
   });
 
-  // Safety: maintain pointer events
+  // Safety: manage pointer events
   const observer = new MutationObserver(() => {
     if (lightbox.hidden || !lightbox.classList.contains("show")) {
       lightbox.style.pointerEvents = "none";
