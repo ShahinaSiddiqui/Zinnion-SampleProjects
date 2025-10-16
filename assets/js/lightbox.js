@@ -1,5 +1,5 @@
 /* =========================================
-   ZINNION VIDEO LIGHTBOX SCRIPT (FINAL FIXED)
+   ZINNION VIDEO LIGHTBOX SCRIPT (FINAL + FIXED ✕ BUTTON)
    ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const triggers = document.querySelectorAll(".btn[data-video]");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  // --- Open via click/tap only ---
+  // --- Open on click/tap only (not hover) ---
   triggers.forEach(btn => {
     btn.addEventListener("click", e => {
       e.preventDefault();
@@ -40,18 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Close only via button or ESC key ---
+  // --- Close via button or ESC key only ---
   closeBtn.addEventListener("click", closeLightbox);
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 
-  // Disable closing by clicking outside
+  // --- Disable closing by clicking outside the video frame ---
   lightbox.addEventListener("click", e => {
     e.stopPropagation();
   });
 
-  // Safety: manage pointer events
+  // --- Safety: maintain pointer events ---
   const observer = new MutationObserver(() => {
     if (lightbox.hidden || !lightbox.classList.contains("show")) {
       lightbox.style.pointerEvents = "none";
