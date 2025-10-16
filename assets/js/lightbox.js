@@ -1,5 +1,5 @@
 /* =========================================
-   ZINNION VIDEO LIGHTBOX SCRIPT (MOBILE-FRIENDLY)
+   ZINNION VIDEO LIGHTBOX SCRIPT (FINAL)
    ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const triggers = document.querySelectorAll(".btn[data-video]");
@@ -8,17 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const caption = document.getElementById("video-caption");
   const closeBtn = lightbox.querySelector(".close-btn");
 
-  // helper: open popup
+  // --- Open Lightbox ---
   const openLightbox = (src, titleText) => {
     video.src = src;
     caption.textContent = titleText || "Zinnion Learning Experience";
     lightbox.hidden = false;
-    void lightbox.offsetWidth; // reflow for animation
+    void lightbox.offsetWidth;
     lightbox.classList.add("show");
     document.body.classList.add("no-scroll");
   };
 
-  // helper: close popup
+  // --- Close Lightbox ---
   const closeLightbox = () => {
     lightbox.classList.remove("show");
     video.pause();
@@ -28,8 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => (lightbox.hidden = true), 350);
   };
 
-  // --- Fix for mobile taps ---
-  // use both click + touchstart for broader coverage
+  // --- Open via buttons ---
   triggers.forEach(btn => {
     ["click", "touchstart"].forEach(evtType => {
       btn.addEventListener(evtType, e => {
@@ -43,16 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // close triggers
+  // --- Close only via button or Esc key ---
   closeBtn.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", e => {
-    if (e.target === lightbox) closeLightbox();
-  });
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 
-  // safety: make sure the overlay never intercepts taps when hidden
+  // Disable closing by clicking outside
+  lightbox.addEventListener("click", e => {
+    e.stopPropagation();
+  });
+
+  // Safety: maintain pointer events
   const observer = new MutationObserver(() => {
     if (lightbox.hidden || !lightbox.classList.contains("show")) {
       lightbox.style.pointerEvents = "none";
