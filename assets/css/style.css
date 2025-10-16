@@ -10,10 +10,9 @@
 }
 
 /* ================================
-   BASE STYLES
+   BASE
 ================================ */
 * { box-sizing: border-box; }
-
 html, body { height: 100%; }
 
 body {
@@ -30,7 +29,7 @@ body {
 .site-header {
   position: fixed;
   inset: 0 0 auto 0;
-  z-index: 3000; /* raised above popup */
+  z-index: 3000;
   background: var(--brand);
   color: #000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -44,16 +43,8 @@ body {
   gap: 16px;
   padding: 12px 20px;
 }
-.brand-block {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.brand-logo {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-}
+.brand-block { display: flex; align-items: center; gap: 10px; }
+.brand-logo { width: 34px; height: 34px; object-fit: contain; }
 .brand {
   text-decoration: none;
   color: #000;
@@ -93,7 +84,7 @@ body {
 }
 
 /* ================================
-   PAGE LAYOUT
+   PAGE
 ================================ */
 .container {
   max-width: 1100px;
@@ -125,6 +116,7 @@ body {
 .project.left .project-copy { order: 2; }
 .project.right .project-media { order: 2; }
 .project.right .project-copy { order: 1; }
+
 .project-media img {
   width: 100%;
   max-width: 540px;
@@ -138,7 +130,7 @@ body {
 .project-copy p { margin: 0 0 14px; color: var(--muted); }
 
 /* ================================
-   VIEW BUTTON
+   BUTTON STYLE
 ================================ */
 .btn {
   display: inline-flex;
@@ -182,7 +174,7 @@ body {
 }
 
 /* ================================
-   LIGHTBOX POPUP (FIXED)
+   LIGHTBOX POPUP
 ================================ */
 .video-lightbox {
   position: fixed;
@@ -206,7 +198,7 @@ body {
   max-width: 900px;
   max-height: 90vh;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
@@ -240,11 +232,11 @@ body {
   border-top: 2px solid #000;
 }
 
-/* Close button */
+/* ✕ BUTTON */
 .video-frame .close-btn {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 12px;
+  right: 12px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -253,31 +245,42 @@ body {
   color: #fff;
   font-size: 22px;
   cursor: pointer;
-  z-index: 2550;
+  z-index: 2600;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
 .video-frame .close-btn:hover {
-  background: var(--brand);
+  background: #fff;
   color: #000;
-  border-color: #000;
+  border-color: var(--brand);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.7),
+              0 0 30px rgba(213, 138, 0, 0.8);
 }
 
 /* ================================
-   MOBILE
+   MOBILE VIEW (FINAL)
 ================================ */
 @media (max-width: 768px) {
   .header-inner { justify-content: space-between; }
   .brand-logo { width: 30px; height: 30px; }
   .download-btn { font-size: 14px; padding: 6px 12px; }
 
+  /* ✅ Mobile project stacking fix */
   .project {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center;
+    align-items: flex-start !important;
+    text-align: left;
   }
 
-  .video-frame { border-width: 4px; }
-  #lightbox-video { max-height: 60vh; }
+  .project-media,
+  .project-copy {
+    width: 100%;
+    order: initial !important;
+  }
+
+  .project-copy h2 { margin-top: 14px; }
+  .project-copy p { margin-bottom: 14px; }
 }
