@@ -1,4 +1,6 @@
-/* ============ Theme ============ */
+/* ================================
+   THEME COLORS
+================================ */
 :root {
   --brand: #d58a00;
   --bg: #0f1216;
@@ -7,9 +9,17 @@
   --muted: #a9b6c2;
 }
 
-/* Base */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+/* ================================
+   BASE STYLES
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font: 16px/1.6 "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
@@ -18,172 +28,222 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== Header (fixed) ===== */
+/* ================================
+   HEADER (DESKTOP)
+================================ */
 .site-header {
-  position: fixed; inset: 0 0 auto 0; z-index: 1000;
-  background: var(--brand); color: #000;
-  border-bottom: 1px solid rgba(0,0,0,.1);
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  background: var(--brand);
+  color: #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.header-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding: 12px 20px;
-}
-.brand {
-  text-decoration: none; color: #000;
-  font-weight: 800; font-size: 20px; white-space: nowrap;
-}
-.top-nav { display: flex; gap: 22px; flex-wrap: wrap; justify-content: flex-end; }
-.top-nav a { color: #000; text-decoration: none; font-weight: 600; }
-.top-nav a:hover { text-decoration: underline; }
 
-/* Container */
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.brand {
+  text-decoration: none;
+  color: #000;
+  font-weight: 800;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+/* ================================
+   DOWNLOAD BUTTON (DESKTOP)
+================================ */
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.download-btn {
+  color: #000;
+  background: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.7),
+              0 0 30px rgba(213, 138, 0, 0.8);
+  transform: translateY(-1px);
+}
+
+.download-btn:active {
+  transform: scale(0.98);
+}
+
+.download-btn.downloading {
+  background: #000;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(213, 138, 0, 0.8);
+  transform: scale(0.98);
+}
+
+/* ================================
+   PAGE LAYOUT
+================================ */
 .container {
-  max-width: 1100px; margin: 0 auto;
+  max-width: 1100px;
+  margin: 0 auto;
   padding: calc(64px + 18px) 20px calc(52px + 18px);
 }
 
-/* Title */
 .page-title {
-  text-align: center; margin: 8px 0 24px;
-  color: var(--brand); font-weight: 800; letter-spacing: .2px;
+  text-align: center;
+  margin: 8px 0 24px;
+  color: var(--brand);
+  font-weight: 800;
+  letter-spacing: 0.2px;
 }
 
-/* ===== Project cards ===== */
+/* ================================
+   PROJECT CARDS
+================================ */
 .project {
   display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-  gap: 34px; align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 34px;
+  align-items: center;
   background: var(--panel);
-  border-radius: 16px; padding: 22px;
-  margin: 26px 0; box-shadow: 0 12px 42px rgba(0,0,0,.28);
+  border-radius: 16px;
+  padding: 22px;
+  margin: 26px 0;
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.28);
 }
-.project.left .project-media { order: 1; }
-.project.left .project-copy  { order: 2; }
-.project.right .project-media { order: 2; }
-.project.right .project-copy  { order: 1; }
+
+.project.left .project-media {
+  order: 1;
+}
+.project.left .project-copy {
+  order: 2;
+}
+.project.right .project-media {
+  order: 2;
+}
+.project.right .project-copy {
+  order: 1;
+}
 
 .project-media img {
-  width: 100%; max-width: 540px; display: block; border-radius: 14px;
-  box-shadow: 0 14px 36px rgba(0,0,0,.55);
-  transition: transform .25s ease;
+  width: 100%;
+  max-width: 540px;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+  transition: transform 0.25s ease;
 }
-.project-media img:hover { transform: scale(1.02); }
-.project-copy h2 { margin: 0 0 10px; }
-.project-copy p { margin: 0 0 14px; color: var(--muted); }
 
-/* Buttons */
+.project-media img:hover {
+  transform: scale(1.02);
+}
+
+.project-copy h2 {
+  margin: 0 0 10px;
+}
+.project-copy p {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+/* ================================
+   BUTTON STYLE
+================================ */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  border: 0; background: var(--brand); color: #000;
-  padding: 10px 18px; border-radius: 10px; font-weight: 800; cursor: pointer;
-  box-shadow: 0 6px 18px rgba(213,138,0,.35);
-  transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
-}
-.btn:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 10px 20px rgba(213,138,0,.45); }
-.btn:active { transform: translateY(0); }
-
-/* ===== Footer ===== */
-.site-footer {
-  position: fixed; inset: auto 0 0 0; z-index: 1000;
-  background: #1a1e23; color: #ccc;
-  border-top: 1px solid rgba(255,255,255,.05);
-}
-.footer-inner {
-  max-width: 1100px; margin: 0 auto; padding: 10px 20px;
-  display: flex; align-items: center; justify-content: flex-end;
-}
-.site-footer small { white-space: nowrap; }
-
-/* ===== LIGHTBOX POPUP ===== */
-.video-lightbox {
-  position: fixed; inset: 0;
-  display: none; align-items: center; justify-content: center;
-  background: rgba(0,0,0,.9);
-  z-index: 2000; opacity: 0;
-  transition: opacity .3s ease; padding: 30px;
-  pointer-events: none;
-}
-.video-lightbox.show { display: flex; opacity: 1; pointer-events: auto; }
-
-.lightbox-content {
-  position: relative; width: 85%; max-width: 960px;
-  display: flex; flex-direction: column; align-items: center;
-  animation: fadeIn .4s ease; min-height: 540px;
-}
-
-.video-frame {
-  position: relative; width: 100%;
-  border: 6px solid #d58a00; border-radius: 16px;
-  padding: 12px; background: rgba(255,255,255,.04);
-  box-shadow: 0 0 25px rgba(213,138,0,.5);
-  animation: glowPulse 1.3s ease-out;
-}
-#lightbox-video { width: 100%; height: auto; display: block; border-radius: 10px; background: #000; z-index: 1; }
-
-.video-caption {
-  width: 100%; text-align: center; margin-top: 12px; padding: 10px 0;
-  border-radius: 8px; background: #f3b740; color: #000;
-  font-weight: 700; letter-spacing: .4px; font-size: 1rem;
-  animation: fadeIn .5s ease;
-}
-
-/* Close button */
-.video-frame .close-btn {
-  position: absolute; top: -14px; right: -14px;
-  width: 38px; height: 38px; border-radius: 50%;
-  border: 2px solid #fff; background: rgba(0,0,0,0.85);
-  color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-  transition: transform .2s ease, background .2s ease;
-  z-index: 2100;
-}
-.video-frame .close-btn:hover {
-  transform: scale(1.08);
-  background: #d58a00;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: var(--brand);
   color: #000;
-  border-color: #000;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(213, 138, 0, 0.35);
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes glowPulse {
-  0% { box-shadow: 0 0 0 rgba(213,138,0,0); }
-  35% { box-shadow: 0 0 35px rgba(213,138,0,0.65); }
-  70% { box-shadow: 0 0 55px rgba(213,138,0,0.4); }
-  100% { box-shadow: 0 0 25px rgba(213,138,0,0.45); }
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 10px 20px rgba(213, 138, 0, 0.45);
 }
 
-/* ===== Desktop layout tweak ===== */
-@media (max-width: 860px) {
-  .project { grid-template-columns: 1fr; }
-  .project-media img { max-width: 100%; }
-  .top-nav { gap: 14px; }
+.btn:active {
+  transform: translateY(0);
 }
 
-/* ===============================
-   ✅ MOBILE VIEW FIXED POPUP + ORDER
-   =============================== */
+/* ================================
+   FOOTER
+================================ */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #1a1e23;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.site-footer small {
+  white-space: nowrap;
+}
+
+/* ================================
+   MOBILE VIEW
+================================ */
 @media (max-width: 768px) {
-
-  /* Header */
   .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    padding: 10px 16px;
+    justify-content: space-between;
   }
-  .brand { font-size: 18px; margin-bottom: 4px; }
-  .top-nav { flex-wrap: wrap; justify-content: flex-start; gap: 10px; }
-  .top-nav a { font-size: 14px; font-weight: 600; }
 
-  /* Button */
-  .btn { position: relative; z-index: 10; pointer-events: auto; }
+  .brand-logo {
+    width: 30px;
+    height: 30px;
+  }
 
-  /* ✅ Reset project layout for mobile */
+  .download-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
   .project {
     display: flex !important;
     flex-direction: column !important;
@@ -191,102 +251,16 @@ body {
     text-align: left;
   }
 
-  .project-media, 
+  .project-media,
   .project-copy {
     width: 100%;
     order: initial !important;
   }
 
-  .project.left .project-media,
-  .project.right .project-media,
-  .project.left .project-copy,
-  .project.right .project-copy {
-    order: initial !important;
+  .project-copy h2 {
+    margin-top: 14px;
   }
-
-  .project-copy h2 { margin-top: 14px; }
-  .project-copy p { margin-bottom: 14px; }
-
-  /* Popup */
-  .video-lightbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    height: 100vh;
-  }
-
-  .lightbox-content {
-    position: relative;
-    width: 92%;
-    max-width: 640px;
-    max-height: 90vh;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-  }
-
-  .video-frame {
-    width: 100%;
-    border: 4px solid var(--brand);
-    border-radius: 12px;
-    padding: 6px;
-    background: rgba(255,255,255,.04);
-    box-shadow: 0 0 25px rgba(213,138,0,.45);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #lightbox-video {
-    width: 100%;
-    max-height: 55vh;
-    object-fit: contain;
-    border-radius: 8px;
-    background: #000;
-  }
-
-  .video-caption {
-    width: 100%;
-    background: #f3b740;
-    color: #000;
-    font-weight: 700;
-    font-size: 0.92rem;
-    text-align: center;
-    margin-top: 8px;
-    margin-bottom: 0;
-    padding: 8px 10px;
-    border-radius: 6px;
-    line-height: 1.4;
-  }
-
-  /* ✅ Mobile close button fix */
-  .video-frame .close-btn {
-    top: -10px;
-    right: -10px;
-    width: 34px;
-    height: 34px;
-    font-size: 22px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    background: rgba(0,0,0,0.85);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2100;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-    transition: transform .2s ease, background .2s ease;
-  }
-
-  .video-frame .close-btn:hover {
-    transform: scale(1.08);
-    background: #d58a00;
-    color: #000;
-    border-color: #000;
+  .project-copy p {
+    margin-bottom: 14px;
   }
 }
