@@ -12,13 +12,9 @@
 /* ================================
    BASE STYLES
 ================================ */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   margin: 0;
@@ -29,17 +25,16 @@ body {
 }
 
 /* ================================
-   HEADER (DESKTOP)
+   HEADER
 ================================ */
 .site-header {
   position: fixed;
   inset: 0 0 auto 0;
-  z-index: 1000;
+  z-index: 3000; /* raised above popup */
   background: var(--brand);
   color: #000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -49,19 +44,16 @@ body {
   gap: 16px;
   padding: 12px 20px;
 }
-
 .brand-block {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .brand-logo {
   width: 34px;
   height: 34px;
   object-fit: contain;
 }
-
 .brand {
   text-decoration: none;
   color: #000;
@@ -71,14 +63,13 @@ body {
 }
 
 /* ================================
-   DOWNLOAD BUTTON (DESKTOP)
+   DOWNLOAD BUTTON
 ================================ */
 .top-nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-
 .download-btn {
   color: #000;
   background: #fff;
@@ -86,25 +77,19 @@ body {
   font-weight: 600;
   padding: 8px 16px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0);
   transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0);
 }
-
 .download-btn:hover {
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.7),
               0 0 30px rgba(213, 138, 0, 0.8);
   transform: translateY(-1px);
 }
-
-.download-btn:active {
-  transform: scale(0.98);
-}
-
+.download-btn:active { transform: scale(0.98); }
 .download-btn.downloading {
   background: #000;
   color: #fff;
   box-shadow: 0 0 20px rgba(213, 138, 0, 0.8);
-  transform: scale(0.98);
 }
 
 /* ================================
@@ -115,13 +100,11 @@ body {
   margin: 0 auto;
   padding: calc(64px + 18px) 20px calc(52px + 18px);
 }
-
 .page-title {
   text-align: center;
   margin: 8px 0 24px;
   color: var(--brand);
   font-weight: 800;
-  letter-spacing: 0.2px;
 }
 
 /* ================================
@@ -138,20 +121,10 @@ body {
   margin: 26px 0;
   box-shadow: 0 12px 42px rgba(0, 0, 0, 0.28);
 }
-
-.project.left .project-media {
-  order: 1;
-}
-.project.left .project-copy {
-  order: 2;
-}
-.project.right .project-media {
-  order: 2;
-}
-.project.right .project-copy {
-  order: 1;
-}
-
+.project.left .project-media { order: 1; }
+.project.left .project-copy { order: 2; }
+.project.right .project-media { order: 2; }
+.project.right .project-copy { order: 1; }
 .project-media img {
   width: 100%;
   max-width: 540px;
@@ -160,21 +133,12 @@ body {
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
   transition: transform 0.25s ease;
 }
-
-.project-media img:hover {
-  transform: scale(1.02);
-}
-
-.project-copy h2 {
-  margin: 0 0 10px;
-}
-.project-copy p {
-  margin: 0 0 14px;
-  color: var(--muted);
-}
+.project-media img:hover { transform: scale(1.02); }
+.project-copy h2 { margin: 0 0 10px; }
+.project-copy p { margin: 0 0 14px; color: var(--muted); }
 
 /* ================================
-   BUTTON STYLE
+   VIEW BUTTON
 ================================ */
 .btn {
   display: inline-flex;
@@ -188,18 +152,13 @@ body {
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(213, 138, 0, 0.35);
-  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-
 .btn:hover {
   transform: translateY(-2px);
-  filter: brightness(1.06);
   box-shadow: 0 10px 20px rgba(213, 138, 0, 0.45);
 }
-
-.btn:active {
-  transform: translateY(0);
-}
+.btn:active { transform: translateY(0); }
 
 /* ================================
    FOOTER
@@ -212,8 +171,8 @@ body {
   color: #ccc;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   width: 100%;
+  z-index: 2000;
 }
-
 .footer-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -222,45 +181,103 @@ body {
   justify-content: flex-end;
 }
 
-.site-footer small {
-  white-space: nowrap;
+/* ================================
+   LIGHTBOX POPUP (FIXED)
+================================ */
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 2500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.video-lightbox.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-content {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.video-frame {
+  position: relative;
+  width: 100%;
+  border: 6px solid var(--brand);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 30px rgba(213, 138, 0, 0.5);
+}
+#lightbox-video {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  background: #000;
+}
+.video-caption {
+  background: #f3b740;
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  border-top: 2px solid #000;
+}
+
+/* Close button */
+.video-frame .close-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 2550;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-frame .close-btn:hover {
+  background: var(--brand);
+  color: #000;
+  border-color: #000;
 }
 
 /* ================================
-   MOBILE VIEW
+   MOBILE
 ================================ */
 @media (max-width: 768px) {
-  .header-inner {
-    justify-content: space-between;
-  }
-
-  .brand-logo {
-    width: 30px;
-    height: 30px;
-  }
-
-  .download-btn {
-    font-size: 14px;
-    padding: 6px 12px;
-  }
+  .header-inner { justify-content: space-between; }
+  .brand-logo { width: 30px; height: 30px; }
+  .download-btn { font-size: 14px; padding: 6px 12px; }
 
   .project {
     display: flex !important;
     flex-direction: column !important;
     align-items: center;
-    text-align: left;
   }
 
-  .project-media,
-  .project-copy {
-    width: 100%;
-    order: initial !important;
-  }
-
-  .project-copy h2 {
-    margin-top: 14px;
-  }
-  .project-copy p {
-    margin-bottom: 14px;
-  }
+  .video-frame { border-width: 4px; }
+  #lightbox-video { max-height: 60vh; }
 }
